@@ -1,13 +1,13 @@
 package app
 
 import (
-	"strings"
-	"net/http"
 	. "flotilla"
+	"net/http"
+	"strings"
 )
 
 func init() {
-  Handle("/").Default(handle)
+	Handle("/").Default(handle)
 }
 
 func handle(r *http.Request) {
@@ -15,6 +15,5 @@ func handle(r *http.Request) {
 	parts := strings.Split(url.Host, ".")
 	Ensure(len(parts) > 1, StatusForbidden)
 	url.Host = strings.Join(parts[1:], ".")
-  Redirect(StatusTemporaryRedirect, url.String())
+	Redirect(StatusTemporaryRedirect, url.String())
 }
-
