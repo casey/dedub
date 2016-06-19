@@ -10,7 +10,7 @@ func init() {
 	Handle("/").Default(handle)
 }
 
-func handle(r *http.Request) {
+func handle(w http.ResponseWriter, r *http.Request) {
 	url := r.URL
 	parts := strings.Split(url.Host, ".")
 	Ensure(len(parts) > 1, StatusForbidden)
