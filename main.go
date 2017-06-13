@@ -15,5 +15,5 @@ func handle(w http.ResponseWriter, r *http.Request) {
 	parts := strings.Split(url.Host, ".")
 	Ensure(len(parts) > 1, StatusForbidden)
 	url.Host = strings.Join(parts[1:], ".")
-	Redirect(StatusTemporaryRedirect, url.String())
+	Redirect(StatusMovedPermanently, url.String())
 }
